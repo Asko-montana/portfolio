@@ -125,8 +125,14 @@
     					<span class="date">2022 - 2024</span>
     					<h2>BTS SIO</h2>
     					<span class="position">Lycée technique Robert Schuman</span>
-						<p class="mt-4">BTS SIO (Services informatiques aux organisations) option SISR (solutions infrastructure systèmes et réseaux) <br> En cours</p>
+						<p class="mt-4">BTS SIO option SISR <br> En cours</p>
     				</div>
+					<div class="resume-wrap ftco-animate">
+						<span class="date">2019 - 2022</span>
+						<h2>Baccalauréat </h2>
+						<span class="position">Lycée Bossuet</span>
+						<p class="mt-4">Baccalauréat Général options Mathématiques, Anglais Monde Contemporain, Physique-Chimie <br> Mention assez bien</p>
+					</div>
     			</div>
     		</div>
     	</div>
@@ -206,6 +212,33 @@
 				</div>
     	</div>
     </section>
+	<section class="ftco-section" id="compétences">
+		<div class="container">
+			<div class="row justify-content-center py-5 mt-5">
+				<div class="col-md-12 heading-section text-center ftco-animate">
+					<h1 class="big big-2">Projets</h1>
+					<h2 class="mb-4">Projets</h2>
+				</div>
+			</div>
+			<div class="d-flex flex-row">
+				<div class="resume-wrap ftco-animate mr-4">
+					<span class="date">Projet HSP</span>
+					<h2></h2>
+					<span class="position">AD /DHCP / DNS / ...</span>
+					<p class="mt-2 mb-3">description</p>
+					<a data-toggle="modal" data-target="#exampleModal" class="bg-primary p-2 text-dark rounded">En savoir plus</a>
+				</div>
+				<div class="resume-wrap ftco-animate ml-4">
+					<div>
+						<span class="date">Projet Airfly</span>
+						<h2></h2>
+						<span class="position">HTML / CSS / PHP</span>
+						<p class="mt-2">description</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
  <section class="ftco-section contact-section ftco-no-pb" id="contact-section">
       <div class="container">
       	<div class="row justify-content-center mb-5 pb-3">
@@ -257,8 +290,28 @@
     </section>
 		
   <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-
+  <div id="ftco-loader" class="show fullscreen bg-dark"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#FFFFF"/></svg></div>
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content bg-dark">
+				<div class="modal-header bg-dark">
+					<h5 class="modal-title text-white" id="exampleModalLabel">Entrez le code</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p id="errorMessage" class="text-danger d-none">Mot de passe incorrect !</p>
+					<div class="input-group mb-3">
+						<input id="password" type="text" class="form-control" placeholder="Mot de passe" aria-label="Username" aria-describedby="basic-addon1">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button onclick="sendPassword()" type="button" class="btn btn-primary">Envoyer</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
@@ -274,6 +327,21 @@
   <script src="js/scrollax.min.js"></script>
   
   <script src="js/main.js"></script>
-    
+	<script>
+		function sendPassword() {
+			const inputMDP = document.getElementById('password')
+			const error = document.getElementById('errorMessage')
+
+			if (inputMDP.value === 'assane123') {
+				const expirationDate = new Date();
+				expirationDate.setTime(expirationDate.getTime() + 2 * 60 * 60 * 1000);
+				document.cookie = `authenticated=true;expires=${expirationDate.toUTCString()};path=/;domain=${window.location.hostname}`;
+				window.location.href = 'CTX.html';
+			} else {
+				error.classList.add("d-block")
+				error.classList.remove("d-none")
+			}
+		}
+	</script>
   </body>
 </html>
